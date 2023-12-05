@@ -2,6 +2,7 @@ package common;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Utils {
@@ -14,7 +15,7 @@ public class Utils {
     }
 
     public static String parseLocalDateToString(LocalDate localDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(DATE_FORMAT);
         return dateFormat.format(localDate);
     }
 
