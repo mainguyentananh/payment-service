@@ -1,6 +1,7 @@
 package service.impl;
 
 import common.Enum;
+import common.Message;
 import common.Utils;
 import model.Bill;
 import model.TransactionHistory;
@@ -57,6 +58,7 @@ public class TransactionServiceImpl implements TransactionService {
             processValidPayment(transactionHistoryList, totalAmount);
         } else {
             processInvalidPayment(transactionHistoryList);
+            System.out.println(Message.PAY);
         }
     }
 
@@ -100,6 +102,8 @@ public class TransactionServiceImpl implements TransactionService {
             bill.setState(Enum.State.PROCESSED);
             billService.update(bill.getId(), bill);
             walletService.deductBalance(bill.getAmount());
+        }else {
+            System.out.println(Message.PAY);
         }
         transactionHistoryService.create(transactionHistory);
     }
