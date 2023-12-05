@@ -1,4 +1,6 @@
+import common.Enum;
 import common.Utils;
+import model.Bill;
 import service.*;
 import service.impl.*;
 
@@ -14,6 +16,16 @@ public class Main {
         ScheduleService scheduleService = new ScheduleServiceImpl();
         TransactionHistoryService transactionHistoryService = new TransactionHistoryServiceImpl();
         TransactionService transactionService = new TransactionServiceImpl(billService, transactionHistoryService, walletService);
+
+
+        //master data
+        Bill bill1 = new Bill(Enum.Type.ELECTRIC,200000L, Utils.parseToDate("25/10/2020"),"EVN HCMC", Enum.State.NOT_PAID);
+        billService.create(bill1);
+        Bill bill2 = new Bill(Enum.Type.INTERNET,300000L, Utils.parseToDate("30/10/2020"),"SAVACO HCMC", Enum.State.NOT_PAID);
+        billService.create(bill2);
+        Bill bill3 = new Bill(Enum.Type.WATER,40000L, Utils.parseToDate("30/11/2020"),"VNPT", Enum.State.NOT_PAID);
+        billService.create(bill3);
+
         while (true) {
             String command = scanner.nextLine();
             String[] params = command.split(" ");

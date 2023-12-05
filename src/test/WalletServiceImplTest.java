@@ -10,12 +10,12 @@ public class WalletServiceImplTest {
     private WalletServiceImpl walletService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         walletService = new WalletServiceImpl();
     }
 
     @Test
-    void testTopUpWallet() {
+    public void testTopUpWallet() {
         Long initialBalance = walletService.getCurrentBalance();
         Long topUpAmount = 100L;
         walletService.topUpWallet(topUpAmount);
@@ -24,7 +24,7 @@ public class WalletServiceImplTest {
     }
 
     @Test
-    void testDeductBalance() {
+    public void testDeductBalance() {
         Long initialBalance = walletService.getCurrentBalance();
         Long deductionAmount = 50L;
         walletService.deductBalance(deductionAmount);
